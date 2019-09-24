@@ -1,5 +1,5 @@
 
-# Flavour Proof-Of-Concept hub
+# Flavour registry - Proof-Of-Concept
 
 Warning: As stated, this is just a proof of concept and the behavior will change in the future.
 
