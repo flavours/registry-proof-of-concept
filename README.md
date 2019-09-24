@@ -4,22 +4,24 @@
 Warning: As stated, this is just a proof of concept and the behavior will change in the future.
 
 
-# Get your own
+# Get your own copy
 
- * create a new project, dont deploy it!
-  * python 3.6
-  * django
- * check it out
- * add this as a new remote
- * force reset master ot new remote origin master
- * push to divio
- * deploy
+This is still a proof of concept. 
 
- ## keep it updated
+ * Create a new project on divio cloud but dont deploy it! The project should be using "python 3.6" and be a plain "django" project.
+ * Check it out locally using the divio cli: `divio project setup <PROJECT_SLUG>` and `cd <PROJECT_SLUG>`
+ * Add the registry upstream repository to your checkout: `git remote add upstream git@github.com:flavours/registry-proof-of-concept.git`
+ * Fetch from upstream: `git fetch upstream`
+ * Force reset master to the new remote origin master: `git reset --hard upstream/master`
+ * Push the new branch to divio: `git push -f origin master`
+ * Deploy on the test environment and see if everything works!
 
- * pull from new remote
- * push 
+ ## Keep it updated
 
+ * Change into the project if you have not already
+ * Pull from new remote: `git fetch upstream`
+ * Merge all changes: `git merge upstream/master`
+ * Push back: `git push origin master`. A force push should not be required.
 
 # Todo
 
