@@ -1,4 +1,4 @@
- Flavour registry - Proof-Of-Concept
+Flavour registry - Proof-Of-Concept
 =====================================
 
 Warning: As stated, this is just a proof of concept and the behavior will change in the future.
