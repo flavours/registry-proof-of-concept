@@ -1,10 +1,11 @@
-
-# Flavour registry - Proof-Of-Concept
+ Flavour registry - Proof-Of-Concept
+=====================================
 
 Warning: As stated, this is just a proof of concept and the behavior will change in the future.
 
 
-# Get your own copy
+Get your own copy
+-----------------
 
 This is still a proof of concept. 
 
@@ -16,22 +17,18 @@ This is still a proof of concept.
  * Push the new branch to divio: `git push -f origin master`
  * Deploy on the test environment and verify that everything works!
 
- ## Keep it updated
+Keep it updated
+-------------------
 
  * Change into the project if you have not already
  * Pull from new remote: `git fetch upstream`
  * Merge all changes: `git merge upstream/master`
  * Push back: `git push origin master`. A force push should not be required.
 
-# Todo
+Changelog
+-----------
 
-* User management and authentication
-* Shared namespace management
-* API tokens
-* CRUD API for addons and addon versions
-
-# Changelog
-
-## 0.1 (20-9-2019)
+0.1 (20-9-2019)
+++++++++++++++++
 
 * initial
