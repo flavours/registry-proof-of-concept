@@ -25,8 +25,8 @@ This is still a proof of concept.
 
 # Todo
 
-* user management and authentication
-* shared namespace management
+* User management and authentication
+* Shared namespace management
 * API tokens
 * CRUD API for addons and addon versions
 
