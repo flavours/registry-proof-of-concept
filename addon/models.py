@@ -1,14 +1,19 @@
 from addon.fields import NonStrippingTextField
 from core.models import UUIDPrimaryKeyMixin
+from django.contrib.postgres.fields import JSONField
 from django.db import models
 from markupfield.fields import MarkupField
+from rest_framework.reverse import reverse
 
 
-class Platform(UUIDPrimaryKeyMixin, models.Model):
+class Stack(UUIDPrimaryKeyMixin, models.Model):
     identifier = models.SlugField(max_length=30)
 
     def __str__(self):
         return f"{self.identifier}"
+
+    def get_api_url(self, request=None):
+        return reverse("stack-detail", args=[self.pk], request=request)
 
 
 class Addon(UUIDPrimaryKeyMixin, models.Model):
@@ -26,8 +31,9 @@ class AddonVersion(UUIDPrimaryKeyMixin, models.Model):
         max_length=255, help_text="`1.0` or `master` or `1.2-beta`"
     )
     yaml = NonStrippingTextField()
-    platforms = models.ManyToManyField(
-        "Platform", help_text="Platforms this tag of the addon supports"
+    config = JSONField(blank=True, default=dict)
+    stacks = models.ManyToManyField(
+        "Stack", help_text="Stacks this tag of the addon supports"
     )
 
     def __str__(self):

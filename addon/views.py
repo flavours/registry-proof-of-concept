@@ -1,19 +1,19 @@
-from addon.models import Addon, AddonVersion, Platform
+from addon.models import Addon, AddonVersion, Stack
 from namespace.models import Namespace
 from rest_framework import serializers, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
 
-class PlatformSerializer(serializers.HyperlinkedModelSerializer):
+class StackSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Platform
+        model = Stack
         fields = ("id", "identifier")
 
 
-class PlatformViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Platform.objects.all()
-    serializer_class = PlatformSerializer
+class StackViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Stack.objects.all()
+    serializer_class = StackSerializer
 
 
 class AddonSerializer(serializers.HyperlinkedModelSerializer):
@@ -41,15 +41,24 @@ class AddonVersionSerializer(serializers.HyperlinkedModelSerializer):
 
     yaml = serializers.SerializerMethodField()
 
+    platforms = serializers.SerializerMethodField()
+
     class Meta:
         model = AddonVersion
-        fields = ("id", "addon", "identifier", "yaml", "platforms")
+        fields = ("id", "addon", "identifier", "yaml", "stacks", "platforms")
 
     def get_yaml(self, obj):
         """
         clean the newlines and lineendings
         """
         return "\n".join(obj.yaml.splitlines()) + "\n"
+
+    def get_platforms(self, obj):
+        """ legacy shim"""
+        return [
+            i.get_api_url(request=self.context["request"])
+            for i in obj.stacks.all()
+        ]
 
 
 class AddonVersionResolveSerializer(serializers.Serializer):

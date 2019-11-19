@@ -11,3 +11,4 @@ django-markupfield
 django-yamlfield
 pyyaml
 django-cors-headers
+libflavour

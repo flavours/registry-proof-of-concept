@@ -11,13 +11,15 @@ INSTALLED_ADDONS = [
 MIDDLEWARE_CLASSES = []
 
 import aldryn_addons.settings
+
+
 aldryn_addons.settings.load(locals())
 
 
 # all django settings can be altered here
 
 INSTALLED_APPS.extend(  # noqa:F821
-    ["rest_framework", "addon", "namespace", "platform", "corsheaders"]
+    ["rest_framework", "addon", "namespace", "corsheaders"]
 )
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
